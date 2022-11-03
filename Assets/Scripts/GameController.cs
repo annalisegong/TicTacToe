@@ -12,6 +12,9 @@ public class GameController : MonoBehaviour
     public Sprite[] playerIcons; // 0 = x and 1 = o
     public Button[] ticTacToeSpaces; // playable spaces
     public int[] markedSpaces; // IDs which space was marked by which player
+    public Text winnerText; //holds winner text
+    public GameObject[] winningLines; //holds different winning lines to show winner
+    public GameObject winnerPanel;
 
     // Start is called before the first frame update
     void Start()
@@ -93,9 +96,23 @@ public class GameController : MonoBehaviour
            if(solutions[i] == 3 * (whoseTurn+1))
            {
                //x wins
-               Debug.Log("player " + whoseTurn + " won!");
+               winnerDisplay(i);
                return;
            }
         }
+    }
+
+    void winnerDisplay(int indexIn)
+    {
+        winnerPanel.gameObject.SetActive(true);
+        if(whoseTurn == 0)
+        {
+            winnerText.text = "Player X wins!!!";
+        }
+        else if(whoseTurn == 1)
+        {
+            winnerText.text = "Player O wins!!!";
+        }
+        winningLines[indexIn].SetActive(true);
     }
 }
