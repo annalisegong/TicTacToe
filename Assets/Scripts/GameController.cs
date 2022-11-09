@@ -12,20 +12,38 @@ public class GameController : MonoBehaviour
     public Sprite[] playerIcons; // 0 = x and 1 = o
     public Button[] ticTacToeSpaces; // playable spaces
     public int[] markedSpaces; // IDs which space was marked by which player
+   
     public Text winnerText; //holds winner text
     public GameObject[] winningLines; //holds different winning lines to show winner
     public GameObject winnerPanel;
+
     public int xPlayersScore;
     public int oPlayersScore;
     public Text xScoreText;
     public Text oScoreText;
+
     public Button xPlayersButton;
     public Button oPlayersButton;
+
+    public GameObject homeScreen;
+    public GameObject modeScreen;
+    public GameObject gameScreen;
 
     // Start is called before the first frame update
     void Start()
     {
-        gameSetUp();
+        startGame();
+    }
+
+    public void startGame()
+    {
+        homeScreen.gameObject.SetActive(true);
+       //gameScreen.gameObject.SetActive(false);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
         
     }
 
@@ -46,10 +64,18 @@ public class GameController : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void goToModeScreen()
     {
-        
+        homeScreen.gameObject.SetActive(false);
+        modeScreen.gameObject.SetActive(true);
+    }
+
+    public void playEasyMode()
+    {
+        modeScreen.gameObject.SetActive(false);
+        gameScreen.gameObject.SetActive(true);
+
+        gameSetUp();
     }
 
     public void ticTacToeButton(int whichNumber)
