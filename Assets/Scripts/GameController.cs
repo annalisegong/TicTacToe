@@ -64,20 +64,6 @@ public class GameController : MonoBehaviour
         }
     }
 
-    public void goToModeScreen()
-    {
-        homeScreen.gameObject.SetActive(false);
-        modeScreen.gameObject.SetActive(true);
-    }
-
-    public void playEasyMode()
-    {
-        modeScreen.gameObject.SetActive(false);
-        gameScreen.gameObject.SetActive(true);
-
-        gameSetUp();
-    }
-
     public void ticTacToeButton(int whichNumber)
     {
         //player cannot change character mid game
@@ -202,5 +188,19 @@ public class GameController : MonoBehaviour
             turnIcons[0].SetActive(false);
             turnIcons[1].SetActive(true);
         }
+    }
+
+     public void goToModeScreen()
+    {
+        homeScreen.gameObject.SetActive(false);
+        modeScreen.gameObject.SetActive(true);
+    }
+
+    public void playEasyMode()
+    {
+        modeScreen.gameObject.SetActive(false);
+        gameScreen.gameObject.SetActive(true);
+
+        gameSetUp();
     }
 }
