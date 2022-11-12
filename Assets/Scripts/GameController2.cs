@@ -29,7 +29,6 @@ public class GameController2 : MonoBehaviour
     public GameObject modeScreen;
     public GameObject gameScreen;
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -41,7 +40,6 @@ public class GameController2 : MonoBehaviour
         homeScreen.gameObject.SetActive(true);
     }
 
-    
     // Update is called once per frame
     void Update()
     {
@@ -53,13 +51,16 @@ public class GameController2 : MonoBehaviour
         instructionText.text = "select a player or Start Game";
         whoseTurn = 0;
         turnCount = 0;
+        //shows x will start
         turnIcons[0].SetActive(true);
         turnIcons[1].SetActive(false);
+        //grid buttons can be clicked
         for(int i = 0; i < ticTacToeSpaces.Length; i++)
         {
-            ticTacToeSpaces[i].interactable =true;
+            ticTacToeSpaces[i].interactable = true;
             ticTacToeSpaces[i].GetComponent<Image>().sprite = null;
         }
+        //sets all grid spaces to unmarked
         for(int i = 0; i < markedSpaces.Length; i++)
         {
             markedSpaces[i] = -100; 
@@ -68,10 +69,12 @@ public class GameController2 : MonoBehaviour
 
     public void ticTacToeButton(int whichNumber)
     {
+        //player cannot change character mid game and instructions disappear
         xPlayersButton.interactable = false;
         oPlayersButton.interactable = false;
         instructionText.text = "";
 
+        //places x or o on button that was clicked; cannot change x or o after click
         ticTacToeSpaces[whichNumber].image.sprite = playerIcons[whoseTurn];
         ticTacToeSpaces[whichNumber].interactable = false;
 
