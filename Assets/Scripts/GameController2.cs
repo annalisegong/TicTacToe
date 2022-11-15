@@ -83,7 +83,11 @@ public class GameController2 : MonoBehaviour
 
         if(turnCount > 8)
         {
-            winnerCheck();
+            bool isWinner = winnerCheck();
+            if(turnCount == 25 && isWinner == false)
+            {
+                draw();
+            }
         }
 
         if(whoseTurn == 0)
@@ -145,7 +149,7 @@ public class GameController2 : MonoBehaviour
         else if(whoseTurn == 1)
         {
             oPlayersScore++;
-            oScoreText.text = xPlayersScore.ToString();
+            oScoreText.text = oPlayersScore.ToString();
             winnerText.text = "Player O wins!!!";
         }
         winningLines[indexIn].SetActive(true);
