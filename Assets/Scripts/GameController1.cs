@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class GameController1 : MonoBehaviour
 {
-    public int whoseTurn; //0 = x and 1 = o
+    public int chosenPlayer; // holds value for x or o depending on who user chose
+    public int whoseTurn; //1 = x and 2 = o
     public int turnCount; // count nunber of turns played
     public GameObject[] turnIcons; //displays whose turn it is
     public Sprite[] playerIcons; // 0 = x and 1 = o
@@ -32,7 +34,6 @@ public class GameController1 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //gameSetUp();
         startGame();
     }
 
@@ -49,7 +50,7 @@ public class GameController1 : MonoBehaviour
 
     void gameSetUp()
     {
-        instructionText.text = "select a player or Start Game";
+        instructionText.text = "select a player by clicking on the X or O";
         whoseTurn = 0;
         turnCount = 0;
         turnIcons[0].SetActive(true);
@@ -70,15 +71,7 @@ public class GameController1 : MonoBehaviour
         //player cannot change character mid game
         xPlayersButton.interactable = false;
         oPlayersButton.interactable = false;
-        instructionText.text = "";
-        //places x or o in clicked button
-        ticTacToeSpaces[whichNumber].image.sprite = playerIcons[whoseTurn];
-        //button cannot change once clicked
-        ticTacToeSpaces[whichNumber].interactable = false;
-
-        //IDs which space is marked by which player x = 0 and o = 1;
-        markedSpaces[whichNumber] = whoseTurn+1;
-        turnCount++;
+        instructionText.text = "3 in a row in any direction wins!";
 
         if(turnCount > 4)
         {
@@ -89,21 +82,55 @@ public class GameController1 : MonoBehaviour
             }
         }
 
-        if(whoseTurn == 0)
+        while(whoseTurn == chosenPlayer)
         {
+            //places x or o in clicked button
+            ticTacToeSpaces[whichNumber].image.sprite = playerIcons[whoseTurn];
+            //button cannot change once clicked
+            ticTacToeSpaces[whichNumber].interactable = false;
             whoseTurn = 1;
             //the following lines display whose turn via the arrows
             turnIcons[0].SetActive(false);
             turnIcons[1].SetActive(true);
+
+            markedSpaces[whichNumber] = whoseTurn+1;
+            turnCount++;
         }
-        else
+
+        if(turnCount > 4)
         {
+            bool isWinner = winnerCheck();
+            if(turnCount == 9 && isWinner == false)
+            {
+                draw();
+            }
+        }
+
+        while(whoseTurn != chosenPlayer)
+        {
+            int num = Random.Range(0,9);
+            bool marked = false;
+            while(marked == false)
+            {
+                if(markedSpaces[num] == -100)
+                {
+                    ticTacToeSpaces[num].image.sprite = playerIcons[whoseTurn];
+                    ticTacToeSpaces[num].interactable = false;
+                    marked = true;  
+                }   
+                else
+                {
+                    num = Random.Range(0,10);
+                }
+            }
             whoseTurn = 0;
             //the following lines display whose turn via the arrows
             turnIcons[0].SetActive(true);
             turnIcons[1].SetActive(false);
+            //IDs which space is marked by chosenplayer x = 1 and o = 2;
+            markedSpaces[num] = whoseTurn+1;
+            turnCount++;
         }
-        
     }
 
     bool winnerCheck()
@@ -180,18 +207,22 @@ public class GameController1 : MonoBehaviour
         if(whichPlayer == 0)
         {
             whoseTurn = 0;
+            chosenPlayer = whoseTurn;
+            instructionText.text = "you are player X - Start Game";
             turnIcons[0].SetActive(true);
             turnIcons[1].SetActive(false);
         }
         else if(whichPlayer == 1)
         {
             whoseTurn = 1;
+            chosenPlayer = whoseTurn;
+            instructionText.text = "you are player O - Start Game";
             turnIcons[0].SetActive(false);
             turnIcons[1].SetActive(true);
         }
     }
 
-     public void goToModeScreen()
+    public void goToModeScreen()
     {
         homeScreen.gameObject.SetActive(false);
         modeScreen.gameObject.SetActive(true);

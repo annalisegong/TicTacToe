@@ -72,7 +72,7 @@ public class GameController2 : MonoBehaviour
         //player cannot change character mid game and instructions disappear
         xPlayersButton.interactable = false;
         oPlayersButton.interactable = false;
-        instructionText.text = "";
+        instructionText.text = "3 or more in a row wins!";
 
         //places x or o on button that was clicked; cannot change x or o after click
         ticTacToeSpaces[whichNumber].image.sprite = playerIcons[whoseTurn];
@@ -81,7 +81,7 @@ public class GameController2 : MonoBehaviour
         markedSpaces[whichNumber] = whoseTurn+1;
         turnCount++;
 
-        if(turnCount > 8)
+        if(turnCount > 4)
         {
             bool isWinner = winnerCheck();
             if(turnCount == 25 && isWinner == false)
@@ -124,11 +124,59 @@ public class GameController2 : MonoBehaviour
         int s11 = markedSpaces[0] + markedSpaces[6] + markedSpaces[12] + markedSpaces[18] + markedSpaces[24];
         int s12 = markedSpaces[4] + markedSpaces[8] + markedSpaces[12] + markedSpaces[16] + markedSpaces[20];
 
+        //horizontal wins 3 in a row
+        /*int s13 = markedSpaces[0] + markedSpaces[1] + markedSpaces[2];
+        int s14 = markedSpaces[1] + markedSpaces[2] + markedSpaces[3];
+        int s15 = markedSpaces[2] + markedSpaces[3] + markedSpaces[4];
+        int s16 = markedSpaces[5] + markedSpaces[6] + markedSpaces[7];
+        int s17 = markedSpaces[6] + markedSpaces[7] + markedSpaces[8];
+        int s18 = markedSpaces[7] + markedSpaces[8] + markedSpaces[9];
+        int s19 = markedSpaces[10] + markedSpaces[11] + markedSpaces[12];
+        int s20 = markedSpaces[11] + markedSpaces[12] + markedSpaces[13];
+        int s21 = markedSpaces[12] + markedSpaces[13] + markedSpaces[14];
+        int s22 = markedSpaces[15] + markedSpaces[16] + markedSpaces[17];
+        int s23 = markedSpaces[16] + markedSpaces[17] + markedSpaces[18];
+        int s24 = markedSpaces[17] + markedSpaces[18] + markedSpaces[19];
+        int s25 = markedSpaces[20] + markedSpaces[21] + markedSpaces[22];
+        int s26 = markedSpaces[21] + markedSpaces[22] + markedSpaces[23];
+        int s27 = markedSpaces[22] + markedSpaces[23] + markedSpaces[24];
+
+        //vertical wins 3 in a row
+        int s28 = markedSpaces[0] + markedSpaces[5] + markedSpaces[10];
+        int s29 = markedSpaces[5] + markedSpaces[10] + markedSpaces[15];
+        int s30 = markedSpaces[10] + markedSpaces[15] + markedSpaces[20];
+        int s31 = markedSpaces[1] + markedSpaces[6] + markedSpaces[11];
+        int s32 = markedSpaces[6] + markedSpaces[11] + markedSpaces[16];
+        int s33 = markedSpaces[11] + markedSpaces[16] + markedSpaces[21];
+        int s34 = markedSpaces[2] + markedSpaces[7] + markedSpaces[12];
+        int s35 = markedSpaces[7] + markedSpaces[12] + markedSpaces[17];
+        int s36 = markedSpaces[12] + markedSpaces[17] + markedSpaces[22];
+        int s37 = markedSpaces[3] + markedSpaces[8] + markedSpaces[13];
+        int s38 = markedSpaces[8] + markedSpaces[13] + markedSpaces[18];
+        int s39 = markedSpaces[13] + markedSpaces[18] + markedSpaces[23];
+        int s40 = markedSpaces[4] + markedSpaces[9] + markedSpaces[14];
+        int s41 = markedSpaces[9] + markedSpaces[14] + markedSpaces[19];
+        int s42 = markedSpaces[14] + markedSpaces[19] + markedSpaces[24];*/
+
+        //horizontal wins 3 in a row
+
         var solutions = new int[] {s1,s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12};
+        /*s13,s14,s15,s16,s17,s18,
+        s19,s20,s21,s22,s23,s24,s25,s26,s27,s28,s29,s30,s31,s32,s33,s34,s35,s36,s37,s38,s39,s40,s41,s42};*/
 
         for(int i = 0; i < solutions.Length; i++)
         {
-            if(solutions[i] == 5 * (whoseTurn+1))
+            if(solutions[i] == 3 * (whoseTurn+1))
+            {
+                winnerDisplay(i); //have to fix this line
+                return true;
+            }
+            /*else if(solutions[i] == 4 * (whoseTurn + 1))
+            {
+                winnerDisplay(i);
+                return true;
+            }*/
+            else if(solutions[i] == 5 * (whoseTurn+1))
             {
                 winnerDisplay(i);
                 return true;

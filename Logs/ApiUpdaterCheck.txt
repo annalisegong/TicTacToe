@@ -148,3 +148,93 @@ C# parse time         : 641ms
 candidates check time : 62ms
 console write time    : 0ms
 
+[api-updater (non-obsolete-error-filter)] 11/19/2022 3:14:38 PM : Starting /Applications/Unity/Unity.app/Contents/Tools/ScriptUpdater/APIUpdater.NonObsoleteApiUpdaterDetector.exe
+[api-updater (non-obsolete-error-filter)] 
+----------------------------------
+jit/startup time      : 576.984ms
+moved types parse time: 143ms
+candidates parse time : 2ms
+C# parse time         : 618ms
+candidates check time : 63ms
+console write time    : 2ms
+
+[api-updater (non-obsolete-error-filter)] 11/19/2022 3:15:08 PM : Starting /Applications/Unity/Unity.app/Contents/Tools/ScriptUpdater/APIUpdater.NonObsoleteApiUpdaterDetector.exe
+[api-updater (non-obsolete-error-filter)] 
+----------------------------------
+jit/startup time      : 91.123ms
+moved types parse time: 95ms
+candidates parse time : 2ms
+C# parse time         : 340ms
+candidates check time : 47ms
+console write time    : 0ms
+
+[api-updater (non-obsolete-error-filter)] 11/19/2022 3:15:33 PM : Starting /Applications/Unity/Unity.app/Contents/Tools/ScriptUpdater/APIUpdater.NonObsoleteApiUpdaterDetector.exe
+[api-updater (non-obsolete-error-filter)] 
+----------------------------------
+jit/startup time      : 353.739ms
+moved types parse time: 96ms
+candidates parse time : 1ms
+C# parse time         : 597ms
+candidates check time : 49ms
+console write time    : 2ms
+
+[api-updater (non-obsolete-error-filter)] 11/21/2022 7:46:16 PM : Starting /Applications/Unity/Unity.app/Contents/Tools/ScriptUpdater/APIUpdater.NonObsoleteApiUpdaterDetector.exe
+[api-updater (non-obsolete-error-filter)] 
+----------------------------------
+jit/startup time      : 541.083ms
+moved types parse time: 111ms
+candidates parse time : 50ms
+C# parse time         : 628ms
+candidates check time : 102ms
+console write time    : 0ms
+
+[api-updater (non-obsolete-error-filter)] 11/21/2022 7:50:14 PM : Starting /Applications/Unity/Unity.app/Contents/Tools/ScriptUpdater/APIUpdater.NonObsoleteApiUpdaterDetector.exe
+[api-updater (non-obsolete-error-filter)] 
+----------------------------------
+jit/startup time      : 488.821ms
+moved types parse time: 121ms
+candidates parse time : 2ms
+C# parse time         : 598ms
+candidates check time : 103ms
+console write time    : 0ms
+
+[api-updater (non-obsolete-error-filter)] 11/21/2022 8:09:23 PM : Starting /Applications/Unity/Unity.app/Contents/Tools/ScriptUpdater/APIUpdater.NonObsoleteApiUpdaterDetector.exe
+[api-updater (non-obsolete-error-filter)] 
+----------------------------------
+jit/startup time      : 427.835ms
+moved types parse time: 133ms
+candidates parse time : 3ms
+C# parse time         : 682ms
+candidates check time : 52ms
+console write time    : 3ms
+
+[api-updater (non-obsolete-error-filter)] 11/22/2022 1:34:24 PM : Starting /Applications/Unity/Unity.app/Contents/Tools/ScriptUpdater/APIUpdater.NonObsoleteApiUpdaterDetector.exe
+[api-updater (non-obsolete-error-filter)] 
+----------------------------------
+jit/startup time      : 375.279ms
+moved types parse time: 134ms
+candidates parse time : 1ms
+C# parse time         : 613ms
+candidates check time : 53ms
+console write time    : 3ms
+
+[api-updater (non-obsolete-error-filter)] 11/22/2022 1:34:44 PM : Starting /Applications/Unity/Unity.app/Contents/Tools/ScriptUpdater/APIUpdater.NonObsoleteApiUpdaterDetector.exe
+[api-updater (non-obsolete-error-filter)] 
+----------------------------------
+jit/startup time      : 114.962ms
+moved types parse time: 63ms
+candidates parse time : 1ms
+C# parse time         : 313ms
+candidates check time : 46ms
+console write time    : 0ms
+
+[api-updater (non-obsolete-error-filter)] 11/22/2022 2:27:16 PM : Starting /Applications/Unity/Unity.app/Contents/Tools/ScriptUpdater/APIUpdater.NonObsoleteApiUpdaterDetector.exe
+[api-updater (non-obsolete-error-filter)] 
+----------------------------------
+jit/startup time      : 434.192ms
+moved types parse time: 86ms
+candidates parse time : 1ms
+C# parse time         : 497ms
+candidates check time : 49ms
+console write time    : 3ms
+
