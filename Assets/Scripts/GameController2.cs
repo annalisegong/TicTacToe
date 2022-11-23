@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class GameController2 : MonoBehaviour
 {
+    public int chosenPlayer; // holds value for x or o depending on who user chose
     public int whoseTurn; //0 = x and 1 = o
     public int turnCount; //count nunber of turns played
     public GameObject[] turnIcons; //displays whose turn it is
@@ -48,7 +49,7 @@ public class GameController2 : MonoBehaviour
 
     void gameSetUp()
     {
-        instructionText.text = "select a player or Start Game";
+        instructionText.text = "select a player by clicking on the X or O";
         whoseTurn = 0;
         turnCount = 0;
         //shows x will start
@@ -69,36 +70,83 @@ public class GameController2 : MonoBehaviour
 
     public void ticTacToeButton(int whichNumber)
     {
-        //player cannot change character mid game and instructions disappear
+        //player cannot change character mid game
         xPlayersButton.interactable = false;
         oPlayersButton.interactable = false;
-        instructionText.text = "3 or more in a row wins!";
+        instructionText.text = "5 in a row in any direction wins!";
 
-        //places x or o on button that was clicked; cannot change x or o after click
-        ticTacToeSpaces[whichNumber].image.sprite = playerIcons[whoseTurn];
-        ticTacToeSpaces[whichNumber].interactable = false;
-
-        markedSpaces[whichNumber] = whoseTurn+1;
-        turnCount++;
-
-        if(turnCount > 4)
+        if(turnCount > 8)
         {
             bool isWinner = winnerCheck();
-            if(turnCount == 25 && isWinner == false)
+            if(isWinner == true)
+            {
+                return;
+            }
+            else if(turnCount == 25 && isWinner == false)
             {
                 draw();
             }
         }
 
+        if(whoseTurn == chosenPlayer)
+        {
+            //places x or o in clicked button
+            ticTacToeSpaces[whichNumber].image.sprite = playerIcons[whoseTurn];
+            //button cannot change once clicked
+            ticTacToeSpaces[whichNumber].interactable = false;
+            //IDs which space is marked by chosenplayer x = 1 and o = 2;
+            markedSpaces[whichNumber] = whoseTurn+1;
+            turnCount++;
+        }
+
+        if(turnCount > 8)
+        {
+            bool isWinner = winnerCheck();
+            if(isWinner == true)
+            {
+                return;
+            }
+            else if(turnCount == 25 && isWinner == false)
+            {
+                draw();
+            }
+        }
+
+        changeTurn();
+        int num = Random.Range(0,14);
+        bool marked = false;
+        while(marked == false)
+        {
+            if(markedSpaces[num] == -100)
+            {
+                ticTacToeSpaces[num].image.sprite = playerIcons[whoseTurn];
+                ticTacToeSpaces[num].interactable = false;
+                marked = true;  
+            }   
+            else
+            {
+                num = Random.Range(0,14);
+            }
+        }
+        //IDs which space is marked by chosenplayer x = 1 and o = 2;
+        markedSpaces[num] = whoseTurn+1;
+        turnCount++;
+        changeTurn();
+    }
+
+    void changeTurn()
+    {
         if(whoseTurn == 0)
         {
             whoseTurn = 1;
+            //the following lines display whose turn via the arrows
             turnIcons[0].SetActive(false);
             turnIcons[1].SetActive(true);
         }
-        else
+        else if(whoseTurn == 1)
         {
             whoseTurn = 0;
+            //the following lines display whose turn via the arrows
             turnIcons[0].SetActive(true);
             turnIcons[1].SetActive(false);
         }
@@ -166,19 +214,20 @@ public class GameController2 : MonoBehaviour
 
         for(int i = 0; i < solutions.Length; i++)
         {
-            if(solutions[i] == 3 * (whoseTurn+1))
+            /*if(solutions[i] == 3 * (whoseTurn+1))
             {
                 winnerDisplay(i); //have to fix this line
                 return true;
             }
-            /*else if(solutions[i] == 4 * (whoseTurn + 1))
+            else if(solutions[i] == 4 * (whoseTurn + 1))
             {
                 winnerDisplay(i);
                 return true;
             }*/
-            else if(solutions[i] == 5 * (whoseTurn+1))
+            if(solutions[i] == 5 * (whoseTurn+1))
             {
                 winnerDisplay(i);
+                instructionText.text = "Game Over! Select: Rematch, Restart, or Return";
                 return true;
             }
         }
@@ -235,12 +284,16 @@ public class GameController2 : MonoBehaviour
         if(whichPlayer == 0)
         {
             whoseTurn = 0;
+            chosenPlayer = whoseTurn;
+            instructionText.text = "you are player X - Start Game";
             turnIcons[0].SetActive(true);
             turnIcons[1].SetActive(false);
         }
         else if(whichPlayer == 1)
         {
             whoseTurn = 1;
+            chosenPlayer = whoseTurn;
+            instructionText.text = "you are player O - Start Game";
             turnIcons[0].SetActive(false);
             turnIcons[1].SetActive(true);
         }

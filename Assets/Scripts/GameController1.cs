@@ -123,7 +123,7 @@ public class GameController1 : MonoBehaviour
             }   
             else
             {
-                num = Random.Range(0,10);
+                num = Random.Range(0,8);
             }
         }
         //IDs which space is marked by chosenplayer x = 1 and o = 2;
