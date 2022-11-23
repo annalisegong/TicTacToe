@@ -80,7 +80,7 @@ public class GameController1 : MonoBehaviour
             {
                 return;
             }
-            if(turnCount == 9 && isWinner == false)
+            else if(turnCount == 9 && isWinner == false)
             {
                 draw();
             }
@@ -95,31 +95,8 @@ public class GameController1 : MonoBehaviour
             //IDs which space is marked by chosenplayer x = 1 and o = 2;
             markedSpaces[whichNumber] = whoseTurn+1;
             turnCount++;
-            changeTurn(); //this line is the issue when outside of while loop
         }
 
-       // while(whoseTurn != chosenPlayer)*/
-        //{
-            int num = Random.Range(0,9);
-            bool marked = false;
-            while(marked == false)
-            {
-                if(markedSpaces[num] == -100)
-                {
-                    ticTacToeSpaces[num].image.sprite = playerIcons[whoseTurn];
-                    ticTacToeSpaces[num].interactable = false;
-                    marked = true;  
-                }   
-                else
-                {
-                    num = Random.Range(0,10);
-                }
-            }
-            //IDs which space is marked by chosenplayer x = 1 and o = 2;
-            markedSpaces[num] = whoseTurn+1;
-            turnCount++;
-            changeTurn();
-        //}
         if(turnCount > 4)
         {
             bool isWinner = winnerCheck();
@@ -127,11 +104,32 @@ public class GameController1 : MonoBehaviour
             {
                 return;
             }
-            if(turnCount == 9 && isWinner == false)
+            else if(turnCount == 9 && isWinner == false)
             {
                 draw();
             }
         }
+
+        changeTurn();
+        int num = Random.Range(0,8);
+        bool marked = false;
+        while(marked == false)
+        {
+            if(markedSpaces[num] == -100)
+            {
+                ticTacToeSpaces[num].image.sprite = playerIcons[whoseTurn];
+                ticTacToeSpaces[num].interactable = false;
+                marked = true;  
+            }   
+            else
+            {
+                num = Random.Range(0,10);
+            }
+        }
+        //IDs which space is marked by chosenplayer x = 1 and o = 2;
+        markedSpaces[num] = whoseTurn+1;
+        turnCount++;
+        changeTurn();
     }
 
     void changeTurn()
@@ -170,6 +168,7 @@ public class GameController1 : MonoBehaviour
            if(solutions[i] == 3 * (whoseTurn+1))
            {
                winnerDisplay(i);
+               instructionText.text = "Game Over! Select: Rematch, Restart, or Return";
                return true;
            }
         }
