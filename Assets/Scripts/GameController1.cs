@@ -88,13 +88,11 @@ public class GameController1 : MonoBehaviour
             ticTacToeSpaces[whichNumber].image.sprite = playerIcons[whoseTurn];
             //button cannot change once clicked
             ticTacToeSpaces[whichNumber].interactable = false;
-            whoseTurn = 1;
-            //the following lines display whose turn via the arrows
-            turnIcons[0].SetActive(false);
-            turnIcons[1].SetActive(true);
-
+            //IDs which space is marked by chosenplayer x = 1 and o = 2;
             markedSpaces[whichNumber] = whoseTurn+1;
             turnCount++;
+            //the following lines display whose turn via the arrows
+            changeTurn();
         }
 
         if(turnCount > 4)
@@ -123,13 +121,27 @@ public class GameController1 : MonoBehaviour
                     num = Random.Range(0,10);
                 }
             }
-            whoseTurn = 0;
-            //the following lines display whose turn via the arrows
-            turnIcons[0].SetActive(true);
-            turnIcons[1].SetActive(false);
             //IDs which space is marked by chosenplayer x = 1 and o = 2;
             markedSpaces[num] = whoseTurn+1;
             turnCount++;
+
+            changeTurn();
+        }
+    }
+
+    public void changeTurn()
+    {
+        if(whoseTurn == 0)
+        {
+            whoseTurn = 1;
+            turnIcons[0].SetActive(false);
+            turnIcons[1].SetActive(true);
+        }
+        else if(whoseTurn == 1)
+        {
+            whoseTurn = 0;
+            turnIcons[0].SetActive(true);
+            turnIcons[1].SetActive(false);
         }
     }
 
