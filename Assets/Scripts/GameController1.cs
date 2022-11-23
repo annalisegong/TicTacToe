@@ -76,13 +76,17 @@ public class GameController1 : MonoBehaviour
         if(turnCount > 4)
         {
             bool isWinner = winnerCheck();
+            if(isWinner == true)
+            {
+                return;
+            }
             if(turnCount == 9 && isWinner == false)
             {
                 draw();
             }
         }
 
-        while(whoseTurn == chosenPlayer)
+        if(whoseTurn == chosenPlayer)
         {
             //places x or o in clicked button
             ticTacToeSpaces[whichNumber].image.sprite = playerIcons[whoseTurn];
@@ -91,21 +95,11 @@ public class GameController1 : MonoBehaviour
             //IDs which space is marked by chosenplayer x = 1 and o = 2;
             markedSpaces[whichNumber] = whoseTurn+1;
             turnCount++;
-            //the following lines display whose turn via the arrows
-            changeTurn();
+            changeTurn(); //this line is the issue when outside of while loop
         }
 
-        if(turnCount > 4)
-        {
-            bool isWinner = winnerCheck();
-            if(turnCount == 9 && isWinner == false)
-            {
-                draw();
-            }
-        }
-
-        while(whoseTurn != chosenPlayer)
-        {
+       // while(whoseTurn != chosenPlayer)*/
+        //{
             int num = Random.Range(0,9);
             bool marked = false;
             while(marked == false)
@@ -124,22 +118,35 @@ public class GameController1 : MonoBehaviour
             //IDs which space is marked by chosenplayer x = 1 and o = 2;
             markedSpaces[num] = whoseTurn+1;
             turnCount++;
-
             changeTurn();
+        //}
+        if(turnCount > 4)
+        {
+            bool isWinner = winnerCheck();
+            if(isWinner == true)
+            {
+                return;
+            }
+            if(turnCount == 9 && isWinner == false)
+            {
+                draw();
+            }
         }
     }
 
-    public void changeTurn()
+    void changeTurn()
     {
         if(whoseTurn == 0)
         {
             whoseTurn = 1;
+            //the following lines display whose turn via the arrows
             turnIcons[0].SetActive(false);
             turnIcons[1].SetActive(true);
         }
         else if(whoseTurn == 1)
         {
             whoseTurn = 0;
+            //the following lines display whose turn via the arrows
             turnIcons[0].SetActive(true);
             turnIcons[1].SetActive(false);
         }
