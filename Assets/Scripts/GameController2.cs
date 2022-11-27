@@ -206,7 +206,7 @@ public class GameController2 : MonoBehaviour
         int s41 = markedSpaces[9] + markedSpaces[14] + markedSpaces[19];
         int s42 = markedSpaces[14] + markedSpaces[19] + markedSpaces[24];
 
-        //horizontal wins 3 in a row
+        //diagonal wins 3 in a row
         int s43 = markedSpaces[0] + markedSpaces[6] + markedSpaces[12];
         int s44 = markedSpaces[6] + markedSpaces[12] + markedSpaces[18];
         int s45 = markedSpaces[12] + markedSpaces[18] + markedSpaces[24];
@@ -214,10 +214,41 @@ public class GameController2 : MonoBehaviour
         int s47 = markedSpaces[8] + markedSpaces[12] + markedSpaces[16];
         int s48 = markedSpaces[12] + markedSpaces[16] + markedSpaces[20];
 
+        //horizontal wins 4 in a row
+        int s49 = markedSpaces[0] + markedSpaces[1] + markedSpaces[2] + markedSpaces[3];
+        int s50 = markedSpaces[1] + markedSpaces[2] + markedSpaces[3] + markedSpaces[4];
+        int s51 = markedSpaces[5] + markedSpaces[6] + markedSpaces[7] + markedSpaces[8];
+        int s52 = markedSpaces[6] + markedSpaces[7] + markedSpaces[8] + markedSpaces[9];
+        int s53 = markedSpaces[10] + markedSpaces[11] + markedSpaces[12] + markedSpaces[13];
+        int s54 = markedSpaces[11] + markedSpaces[12] + markedSpaces[13] + markedSpaces[14];
+        int s55 = markedSpaces[15] + markedSpaces[16] + markedSpaces[17] + markedSpaces[18];
+        int s56 = markedSpaces[16] + markedSpaces[17] + markedSpaces[18] + markedSpaces[19];
+        int s57 = markedSpaces[20] + markedSpaces[21] + markedSpaces[22] + markedSpaces[23];
+        int s58 = markedSpaces[21] + markedSpaces[22] + markedSpaces[23] + markedSpaces[24];
+
+        //vertical wins 4 in a row
+        int s59 = markedSpaces[0] + markedSpaces[5] + markedSpaces[10] + markedSpaces[15];
+        int s60 = markedSpaces[5] + markedSpaces[10] + markedSpaces[15] + markedSpaces[20];
+        int s61 = markedSpaces[1] + markedSpaces[6] + markedSpaces[11] + markedSpaces[16];
+        int s62 = markedSpaces[6] + markedSpaces[11] + markedSpaces[16] + markedSpaces[21]; 
+        int s63 = markedSpaces[2] + markedSpaces[7] + markedSpaces[12] + markedSpaces[17];
+        int s64 = markedSpaces[7] + markedSpaces[12] + markedSpaces[17] + markedSpaces[22]; 
+        int s65 = markedSpaces[3] + markedSpaces[8] + markedSpaces[13] + markedSpaces[18];
+        int s66 = markedSpaces[8] + markedSpaces[13] + markedSpaces[18] + markedSpaces[23];
+        int s67 = markedSpaces[4] + markedSpaces[9] + markedSpaces[14] + markedSpaces[19];
+        int s68 = markedSpaces[9] + markedSpaces[14] + markedSpaces[19] + markedSpaces[24];
+
+        //diagonal wins 4 in a row
+        int s69 = markedSpaces[0] + markedSpaces[6] + markedSpaces[12] + markedSpaces[18];
+        int s70 = markedSpaces[6] + markedSpaces[12] + markedSpaces[18] + markedSpaces[24];
+        int s71 = markedSpaces[4] + markedSpaces[8] + markedSpaces[12] + markedSpaces[16];
+        int s72 = markedSpaces[8] + markedSpaces[12] + markedSpaces[16] + markedSpaces[20];
+
         var solutions = new int[] {s1,s2,s3,s4,s5,s6,s7,s8,s9,s10,s11,
         s12,s13,s14,s15,s16,s17,s18,s19,s20,s21,s22,s23,s24,s25,s26,s27,
         s28,s29,s30,s31,s32,s33,s34,s35,s36,s37,s38,s39,s40,s41,s42,s43,
-        s44,s45,s46,s47,s48,};
+        s44,s45,s46,s47,s48,s49,s50,s51,s52,s53,s54,s55,s56,s57,s58,s59,
+        s60,s61,s62,s63,s64,s65,s66,s67,s68,s69,s70,s71,s72};
 
         for(int i = 0; i < solutions.Length; i++)
         {
@@ -227,7 +258,7 @@ public class GameController2 : MonoBehaviour
                 instructionText.text = "Game Over! Select: Rematch, Restart, or Return";
                 return true;
             }
-            else if(solutions[i] == 4 * (whoseTurn + 1))
+            else if(solutions[i] == 4 * (whoseTurn + 1))//either 4 or 8
             {
                 winnerDisplay(i);
                 instructionText.text = "Game Over! Select: Rematch, Restart, or Return";
