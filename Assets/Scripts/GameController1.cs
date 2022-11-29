@@ -199,6 +199,26 @@ public class GameController1 : MonoBehaviour
         winnerText.text = "It's a DRAW!";
     }
 
+    public void switchPlayer(int whichPlayer)
+    {
+        if(whichPlayer == 0)
+        {
+            whoseTurn = 0;
+            chosenPlayer = whoseTurn;
+            instructionText.text = "you are player X - Start Game";
+            turnIcons[0].SetActive(true);
+            turnIcons[1].SetActive(false);
+        }
+        else if(whichPlayer == 1)
+        {
+            whoseTurn = 1;
+            chosenPlayer = whoseTurn;
+            instructionText.text = "you are player O - Start Game";
+            turnIcons[0].SetActive(false);
+            turnIcons[1].SetActive(true);
+        }
+    }
+
     public void rematch()
     {
         gameSetUp();
@@ -218,26 +238,6 @@ public class GameController1 : MonoBehaviour
         oPlayersScore = 0;
         xScoreText.text = "0";
         oScoreText.text = "0";
-    }
-
-    public void switchPlayer(int whichPlayer)
-    {
-        if(whichPlayer == 0)
-        {
-            whoseTurn = 0;
-            chosenPlayer = whoseTurn;
-            instructionText.text = "you are player X - Start Game";
-            turnIcons[0].SetActive(true);
-            turnIcons[1].SetActive(false);
-        }
-        else if(whichPlayer == 1)
-        {
-            whoseTurn = 1;
-            chosenPlayer = whoseTurn;
-            instructionText.text = "you are player O - Start Game";
-            turnIcons[0].SetActive(false);
-            turnIcons[1].SetActive(true);
-        }
     }
 
     public void goToModeScreen()
