@@ -168,7 +168,7 @@ public class GameController1 : MonoBehaviour
            if(solutions[i] == 3 * (whoseTurn+1))
            {
                winnerDisplay(i);
-               instructionText.text = "Game Over! Select: Rematch, Restart, or Return";
+               instructionText.text = "Game Over!";
                return true;
            }
         }
