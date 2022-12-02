@@ -50,7 +50,7 @@ public class GameController1 : MonoBehaviour
 
     void gameSetUp()
     {
-        instructionText.text = "select a player by clicking on the X or O";
+        instructionText.text = "Click on the X or O to select player";
         whoseTurn = 0;
         turnCount = 0;
         turnIcons[0].SetActive(true);
