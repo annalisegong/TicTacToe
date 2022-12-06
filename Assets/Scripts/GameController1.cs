@@ -111,7 +111,14 @@ public class GameController1 : MonoBehaviour
         }
 
         changeTurn();
-        int num = Random.Range(0,8);
+        int low = 0;
+        int high = 8;
+        if(whichNumber != 0 && whichNumber != 8)
+        {
+            low = whichNumber -1;
+            high = whichNumber+1;
+        }
+        int num = Random.Range(low,high);
         bool marked = false;
         while(marked == false)
         {
@@ -123,7 +130,23 @@ public class GameController1 : MonoBehaviour
             }   
             else
             {
-                num = Random.Range(0,8);
+                if(low != 0)
+                {
+                    low = low - 1;
+                }
+                else
+                {
+                    low = 0;
+                }
+                if(high != 8)
+                {
+                    high = high + 1;
+                }
+                else
+                {
+                    high = 8;
+                }
+                num = Random.Range(low,high);
             }
         }
         //IDs which space is marked by chosenplayer x = 1 and o = 2;
