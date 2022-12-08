@@ -113,7 +113,7 @@ public class GameController3 : MonoBehaviour
         }
 
         changeTurn();
-        int num = Random.Range(0,63);
+         int num = Random.Range(0,63);
         bool marked = false;
         while(marked == false)
         {

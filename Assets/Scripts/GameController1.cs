@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class GameController1 : MonoBehaviour
 {
+    public int position; //AI desired placement
     public int chosenPlayer; // holds value for x or o depending on who user chose
     public int whoseTurn; //1 = x and 2 = o
     public int turnCount; // count nunber of turns played
@@ -83,6 +84,7 @@ public class GameController1 : MonoBehaviour
             else if(turnCount == 9 && isWinner == false)
             {
                 draw();
+                return;
             }
         }
 
@@ -110,15 +112,20 @@ public class GameController1 : MonoBehaviour
             }
         }
 
-        changeTurn();
-        int low = 0;
-        int high = 8;
-        if(whichNumber != 0 && whichNumber != 8)
+        int num = Random.Range(0,8); ;
+        //checks if user could win and tries to block possible win
+        if(turnCount > 2)
         {
-            low = whichNumber -1;
-            high = whichNumber+1;
+            bool possibleWin = canWin();
+            if(possibleWin == true)
+            {
+                System.Diagnostics.Debug.WriteLine(position);
+                num = position;
+            }      
         }
-        int num = Random.Range(low,high);
+        
+        changeTurn();
+
         bool marked = false;
         while(marked == false)
         {
@@ -130,23 +137,7 @@ public class GameController1 : MonoBehaviour
             }   
             else
             {
-                if(low != 0)
-                {
-                    low = low - 1;
-                }
-                else
-                {
-                    low = 0;
-                }
-                if(high != 8)
-                {
-                    high = high + 1;
-                }
-                else
-                {
-                    high = 8;
-                }
-                num = Random.Range(low,high);
+                num = Random.Range(0,8);
             }
         }
         //IDs which space is marked by chosenplayer x = 1 and o = 2;
@@ -194,6 +185,52 @@ public class GameController1 : MonoBehaviour
                instructionText.text = "Game Over!";
                return true;
            }
+        }
+        return false;
+    }
+
+    bool canWin()
+    {
+        //holds three individual board values (-100, 1, or 2) in each array
+        int[] a1 = new int[] {markedSpaces[0], markedSpaces[1], markedSpaces[2]};
+        int[] a2 = new int[] {markedSpaces[3], markedSpaces[4], markedSpaces[5]};
+        int[] a3 = new int[] {markedSpaces[6], markedSpaces[7], markedSpaces[8]};   
+        int[] a4 = new int[] {markedSpaces[0], markedSpaces[3], markedSpaces[6]};
+        int[] a5 = new int[] {markedSpaces[1], markedSpaces[4], markedSpaces[7]};
+        int[] a6 = new int[] {markedSpaces[2], markedSpaces[5], markedSpaces[8]};
+        int[] a7 = new int[] {markedSpaces[0], markedSpaces[4], markedSpaces[8]};
+        int[] a8 = new int[] {markedSpaces[2], markedSpaces[4], markedSpaces[6]};
+
+        //holds sum of three board values
+        int s1 = markedSpaces[0] + markedSpaces[1] + markedSpaces[2];
+        int s2 = markedSpaces[3] + markedSpaces[4] + markedSpaces[5];
+        int s3 = markedSpaces[6] + markedSpaces[7] + markedSpaces[8];   
+        int s4 = markedSpaces[0] + markedSpaces[3] + markedSpaces[6];
+        int s5 = markedSpaces[1] + markedSpaces[4] + markedSpaces[7];
+        int s6 = markedSpaces[2] + markedSpaces[5] + markedSpaces[8];
+        int s7 = markedSpaces[0] + markedSpaces[4] + markedSpaces[8];
+        int s8 = markedSpaces[2] + markedSpaces[4] + markedSpaces[6];
+
+        var solutions = new int[] {s1,s2, s3, s4, s5, s6, s7, s8};
+        var indexArr = new int[8][] {a1, a2, a3, a4, a5, a6, a7, a8};
+
+        //seraches through s1,s2,s3,s4,s5,s6,s7,s8
+        for(int i = 0; i < solutions.Length; i++)
+        {
+            if(solutions[i] == 2 * (chosenPlayer+1)) //if s# == 2 for x or 4 for o
+            {
+                //searches through a1,a2,a3,a4,a5,a6,a7,a8
+                for(int j = 0; j < indexArr[i].Length; j++) //length should be 3
+                {
+                    //searches for empty space in possible winning line
+                    if(indexArr[i][j] == -100)
+                    {
+                        position = indexArr[i][j]; 
+                        System.Diagnostics.Debug.WriteLine(position);
+                        return true;
+                    }
+                }
+            }
         }
         return false;
     }
