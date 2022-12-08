@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class GameController1 : MonoBehaviour
 {
+    public int num; //whichNumber on grid for AI
     public int position; //AI desired placement
     public int chosenPlayer; // holds value for x or o depending on who user chose
     public int whoseTurn; //1 = x and 2 = o
@@ -74,20 +75,6 @@ public class GameController1 : MonoBehaviour
         oPlayersButton.interactable = false;
         instructionText.text = "3 in a row in any direction wins!";
 
-        if(turnCount > 4)
-        {
-            bool isWinner = winnerCheck();
-            if(isWinner == true)
-            {
-                return;
-            }
-            else if(turnCount == 9 && isWinner == false)
-            {
-                draw();
-                return;
-            }
-        }
-
         if(whoseTurn == chosenPlayer)
         {
             //places x or o in clicked button
@@ -99,6 +86,7 @@ public class GameController1 : MonoBehaviour
             turnCount++;
         }
 
+        //checks if there's a winner before AI can place character
         if(turnCount > 4)
         {
             bool isWinner = winnerCheck();
@@ -109,22 +97,24 @@ public class GameController1 : MonoBehaviour
             else if(turnCount == 9 && isWinner == false)
             {
                 draw();
+                return;
             }
         }
+        changeTurn();
 
-        int num = Random.Range(0,8); ;
         //checks if user could win and tries to block possible win
-        if(turnCount > 2)
+        if(turnCount > 1)
         {
             bool possibleWin = canWin();
             if(possibleWin == true)
             {
-                System.Diagnostics.Debug.WriteLine(position);
                 num = position;
-            }      
+            }    
+            else
+            {
+                num = Random.Range(0,8);
+            }  
         }
-        
-        changeTurn();
 
         bool marked = false;
         while(marked == false)
@@ -143,6 +133,20 @@ public class GameController1 : MonoBehaviour
         //IDs which space is marked by chosenplayer x = 1 and o = 2;
         markedSpaces[num] = whoseTurn+1;
         turnCount++;
+
+        if(turnCount > 4)
+        {
+            bool isWinner = winnerCheck();
+            if(isWinner == true)
+            {
+                return;
+            }
+            else if(turnCount == 9 && isWinner == false)
+            {
+                draw();
+                return;
+            }
+        }
         changeTurn();
     }
 
@@ -191,7 +195,7 @@ public class GameController1 : MonoBehaviour
 
     bool canWin()
     {
-        //holds three individual board values (-100, 1, or 2) in each array
+        //holds individual board values (-100, 1, or 2) in each array
         int[] a1 = new int[] {markedSpaces[0], markedSpaces[1], markedSpaces[2]};
         int[] a2 = new int[] {markedSpaces[3], markedSpaces[4], markedSpaces[5]};
         int[] a3 = new int[] {markedSpaces[6], markedSpaces[7], markedSpaces[8]};   
@@ -200,6 +204,16 @@ public class GameController1 : MonoBehaviour
         int[] a6 = new int[] {markedSpaces[2], markedSpaces[5], markedSpaces[8]};
         int[] a7 = new int[] {markedSpaces[0], markedSpaces[4], markedSpaces[8]};
         int[] a8 = new int[] {markedSpaces[2], markedSpaces[4], markedSpaces[6]};
+
+        //holds board button numbers
+        int[] b1 = new int[] {0, 1, 2};
+        int[] b2 = new int[] {3, 4, 5};
+        int[] b3 = new int[] {6, 7, 8};   
+        int[] b4 = new int[] {0, 3, 6};
+        int[] b5 = new int[] {1, 4, 7};
+        int[] b6 = new int[] {2, 5, 8};
+        int[] b7 = new int[] {0, 4, 8};
+        int[] b8 = new int[] {2, 4, 6};
 
         //holds sum of three board values
         int s1 = markedSpaces[0] + markedSpaces[1] + markedSpaces[2];
@@ -211,22 +225,22 @@ public class GameController1 : MonoBehaviour
         int s7 = markedSpaces[0] + markedSpaces[4] + markedSpaces[8];
         int s8 = markedSpaces[2] + markedSpaces[4] + markedSpaces[6];
 
-        var solutions = new int[] {s1,s2, s3, s4, s5, s6, s7, s8};
-        var indexArr = new int[8][] {a1, a2, a3, a4, a5, a6, a7, a8};
+        var solutions = new int[] {s1, s2, s3, s4, s5, s6, s7, s8};
+        var values = new int[8][] {a1, a2, a3, a4, a5, a6, a7, a8};
+        var boardNums = new int[8][] {b1, b2, b3, b4, b5, b6, b7, b8};
 
         //seraches through s1,s2,s3,s4,s5,s6,s7,s8
-        for(int i = 0; i < solutions.Length; i++)
+        for(int i = 0; i <= solutions.Length; i++)
         {
-            if(solutions[i] == 2 * (chosenPlayer+1)) //if s# == 2 for x or 4 for o
+            if(solutions[i] == (-98) || solutions[i] == (-96)) //if s# == 2 for x or 4 for o
             {
                 //searches through a1,a2,a3,a4,a5,a6,a7,a8
-                for(int j = 0; j < indexArr[i].Length; j++) //length should be 3
+                for(int j = 0; j <= 3; j++)
                 {
                     //searches for empty space in possible winning line
-                    if(indexArr[i][j] == -100)
+                    if(values[i][j] == -100)
                     {
-                        position = indexArr[i][j]; 
-                        System.Diagnostics.Debug.WriteLine(position);
+                        position = boardNums[i][j];
                         return true;
                     }
                 }
@@ -256,6 +270,7 @@ public class GameController1 : MonoBehaviour
     void draw()
     {
         winnerPanel.SetActive(true);
+        instructionText.text = "Game Over!";
         winnerText.text = "It's a DRAW!";
     }
 

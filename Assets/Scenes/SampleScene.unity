@@ -7440,7 +7440,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7735849, g: 0.7735849, b: 0.7735849, a: 1}
+  m_Color: {r: 0.754717, g: 0.754717, b: 0.754717, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -22901,6 +22901,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff89dd971221949a9ab0253397d37c8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  num: 0
   position: 0
   chosenPlayer: 0
   whoseTurn: 0
