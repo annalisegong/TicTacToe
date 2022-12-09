@@ -113,7 +113,7 @@ public class GameController2 : MonoBehaviour
         }
 
         changeTurn();
-        int num = Random.Range(0,14);
+        int num = Random.Range(0,24);
         bool marked = false;
         while(marked == false)
         {
@@ -125,7 +125,7 @@ public class GameController2 : MonoBehaviour
             }   
             else
             {
-                num = Random.Range(0,14);
+                num = Random.Range(0,24);
             }
         }
         //IDs which space is marked by AI x = 1 and o = 2;

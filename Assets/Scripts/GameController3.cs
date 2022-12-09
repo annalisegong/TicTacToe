@@ -75,19 +75,6 @@ public class GameController3 : MonoBehaviour
         oPlayersButton.interactable = false;
         instructionText.text = "3 in a row in any direction wins!";
 
-        if(turnCount > 4)
-        {
-            bool isWinner = winnerCheck();
-            if(isWinner == true)
-            {
-                return;
-            }
-            else if(turnCount == 64 && isWinner == false)
-            {
-                draw();
-            }
-        }
-
         if(whoseTurn == chosenPlayer)
         {
             //places x or o in clicked button
@@ -113,6 +100,7 @@ public class GameController3 : MonoBehaviour
         }
 
         changeTurn();
+
         int num = Random.Range(0,63);
         bool marked = false;
         while(marked == false)
@@ -131,6 +119,19 @@ public class GameController3 : MonoBehaviour
         //IDs which space is marked by chosenplayer x = 1 and o = 2;
         markedSpaces[num] = whoseTurn+1;
         turnCount++;
+        
+        if(turnCount > 4)
+        {
+            bool isWinner = winnerCheck();
+            if(isWinner == true)
+            {
+                return;
+            }
+            else if(turnCount == 64 && isWinner == false)
+            {
+                draw();
+            }
+        }
         changeTurn();
     }
 
@@ -371,6 +372,7 @@ public class GameController3 : MonoBehaviour
     void draw()
     {
         winnerPanel.SetActive(true);
+        instructionText.text = "Game Over!";
         winnerText.text = "It's a DRAW!";
     }
 
