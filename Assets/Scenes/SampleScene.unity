@@ -20861,6 +20861,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8a98428f21d0409c958ccc3cef10748, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  position: 0
+  num: 0
   chosenPlayer: 0
   whoseTurn: 0
   turnCount: 0
@@ -27060,6 +27062,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a16d642d10a8448a1800b9af5c7d3b4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  position: 0
+  num: 0
   chosenPlayer: 0
   whoseTurn: 0
   turnCount: 0

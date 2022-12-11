@@ -107,7 +107,6 @@ public class GameController2 : MonoBehaviour
             bool possibleWin = canWin();
             if(possibleWin == true)
             {
-                instructionText.text = "true";
                 num = position;
             }
             else

@@ -312,8 +312,8 @@ public class GameController3 : MonoBehaviour
         int s138 = markedSpaces[18] + markedSpaces[25] + markedSpaces[32];
         int s139 = markedSpaces[5] + markedSpaces[12] + markedSpaces[19];
         int s140 = markedSpaces[12] + markedSpaces[19] + markedSpaces[26];
-        int s141 = markedSpaces[19] + markedSpaces[26] + markedSpaces[32];
-        int s142 = markedSpaces[26] + markedSpaces[32] + markedSpaces[40];
+        int s141 = markedSpaces[19] + markedSpaces[26] + markedSpaces[33];
+        int s142 = markedSpaces[26] + markedSpaces[33] + markedSpaces[40];
         int s143 = markedSpaces[6] + markedSpaces[13] + markedSpaces[20];
         int s144 = markedSpaces[13] + markedSpaces[20] + markedSpaces[27];
         int s145 = markedSpaces[20] + markedSpaces[27] + markedSpaces[34];
@@ -334,7 +334,7 @@ public class GameController3 : MonoBehaviour
         int s160 = markedSpaces[30] + markedSpaces[37] + markedSpaces[44];
         int s161 = markedSpaces[37] + markedSpaces[44] + markedSpaces[51];
         int s162 = markedSpaces[44] + markedSpaces[51] + markedSpaces[58];
-        int s163 = markedSpaces[31] + markedSpaces[38] + markedSpaces[52];
+        int s163 = markedSpaces[31] + markedSpaces[38] + markedSpaces[45];
         int s164 = markedSpaces[38] + markedSpaces[45] + markedSpaces[52];
         int s165 = markedSpaces[45] + markedSpaces[52] + markedSpaces[59];
         int s166 = markedSpaces[39] + markedSpaces[46] + markedSpaces[53];
@@ -506,8 +506,8 @@ public class GameController3 : MonoBehaviour
         int[] a138 = new int[] {markedSpaces[18], markedSpaces[25], markedSpaces[32]};
         int[] a139 = new int[] {markedSpaces[5], markedSpaces[12], markedSpaces[19]};
         int[] a140 = new int[] {markedSpaces[12], markedSpaces[19], markedSpaces[26]};
-        int[] a141 = new int[] {markedSpaces[19], markedSpaces[26], markedSpaces[32]};
-        int[] a142 = new int[] {markedSpaces[26], markedSpaces[32], markedSpaces[40]};
+        int[] a141 = new int[] {markedSpaces[19], markedSpaces[26], markedSpaces[33]};
+        int[] a142 = new int[] {markedSpaces[26], markedSpaces[33], markedSpaces[40]};
         int[] a143 = new int[] {markedSpaces[6], markedSpaces[13], markedSpaces[20]};
         int[] a144 = new int[] {markedSpaces[13], markedSpaces[20], markedSpaces[27]};
         int[] a145 = new int[] {markedSpaces[20], markedSpaces[27], markedSpaces[34]};
@@ -528,7 +528,7 @@ public class GameController3 : MonoBehaviour
         int[] a160 = new int[] {markedSpaces[30], markedSpaces[37], markedSpaces[44]};
         int[] a161 = new int[] {markedSpaces[37], markedSpaces[44], markedSpaces[51]};
         int[] a162 = new int[] {markedSpaces[44], markedSpaces[51], markedSpaces[58]};
-        int[] a163 = new int[] {markedSpaces[31], markedSpaces[38], markedSpaces[52]};
+        int[] a163 = new int[] {markedSpaces[31], markedSpaces[38], markedSpaces[45]};
         int[] a164 = new int[] {markedSpaces[38], markedSpaces[45], markedSpaces[52]};
         int[] a165 = new int[] {markedSpaces[45], markedSpaces[52], markedSpaces[59]};
         int[] a166 = new int[] {markedSpaces[39], markedSpaces[46], markedSpaces[53]};
@@ -676,8 +676,8 @@ public class GameController3 : MonoBehaviour
         int[] b138 = new int[] {18,25,32};
         int[] b139 = new int[] {5,12,19};
         int[] b140 = new int[] {12,19,26};
-        int[] b141 = new int[] {19,26,32};
-        int[] b142 = new int[] {26,32,40};
+        int[] b141 = new int[] {19,26,33};
+        int[] b142 = new int[] {26,33,40};
         int[] b143 = new int[] {6,13,20};
         int[] b144 = new int[] {13,20,27};
         int[] b145 = new int[] {20,27,34};
@@ -698,7 +698,7 @@ public class GameController3 : MonoBehaviour
         int[] b160 = new int[] {30,37,44};
         int[] b161 = new int[] {37,44,51};
         int[] b162 = new int[] {44,51,58};
-        int[] b163 = new int[] {31,38,52};
+        int[] b163 = new int[] {31,38,45};
         int[] b164 = new int[] {38,45,52};
         int[] b165 = new int[] {45,52,59};
         int[] b166 = new int[] {39,46,53};
@@ -846,8 +846,8 @@ public class GameController3 : MonoBehaviour
         int s138 = markedSpaces[18] + markedSpaces[25] + markedSpaces[32];
         int s139 = markedSpaces[5] + markedSpaces[12] + markedSpaces[19];
         int s140 = markedSpaces[12] + markedSpaces[19] + markedSpaces[26];
-        int s141 = markedSpaces[19] + markedSpaces[26] + markedSpaces[32];
-        int s142 = markedSpaces[26] + markedSpaces[32] + markedSpaces[40];
+        int s141 = markedSpaces[19] + markedSpaces[26] + markedSpaces[33];
+        int s142 = markedSpaces[26] + markedSpaces[33] + markedSpaces[40];
         int s143 = markedSpaces[6] + markedSpaces[13] + markedSpaces[20];
         int s144 = markedSpaces[13] + markedSpaces[20] + markedSpaces[27];
         int s145 = markedSpaces[20] + markedSpaces[27] + markedSpaces[34];
@@ -868,7 +868,7 @@ public class GameController3 : MonoBehaviour
         int s160 = markedSpaces[30] + markedSpaces[37] + markedSpaces[44];
         int s161 = markedSpaces[37] + markedSpaces[44] + markedSpaces[51];
         int s162 = markedSpaces[44] + markedSpaces[51] + markedSpaces[58];
-        int s163 = markedSpaces[31] + markedSpaces[38] + markedSpaces[52];
+        int s163 = markedSpaces[31] + markedSpaces[38] + markedSpaces[45];
         int s164 = markedSpaces[38] + markedSpaces[45] + markedSpaces[52];
         int s165 = markedSpaces[45] + markedSpaces[52] + markedSpaces[59];
         int s166 = markedSpaces[39] + markedSpaces[46] + markedSpaces[53];
