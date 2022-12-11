@@ -230,12 +230,12 @@ public class GameController1 : MonoBehaviour
         var boardNums = new int[8][] {b1, b2, b3, b4, b5, b6, b7, b8};
 
         //seraches through s1,s2,s3,s4,s5,s6,s7,s8
-        for(int i = 0; i <= solutions.Length; i++)
+        for(int i = 0; i < solutions.Length; i++)
         {
             if(solutions[i] == (-98) || solutions[i] == (-96)) //if s# == 2 for x or 4 for o
             {
                 //searches through a1,a2,a3,a4,a5,a6,a7,a8
-                for(int j = 0; j <= 3; j++)
+                for(int j = 0; j < 3; j++)
                 {
                     //searches for empty space in possible winning line
                     if(values[i][j] == -100)
